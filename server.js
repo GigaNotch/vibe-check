@@ -14,6 +14,12 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const FRONTEND_URI = process.env.FRONTEND_URI;
+const PORT = process.env.PORT || 8888;
+
+if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI || !FRONTEND_URI) {
+    console.error('Missing required environment variable(s): CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, and FRONTEND_URI are all required.');
+    process.exit(1);
+}
 
 // Home
 app.get('/', (req, res) => {
@@ -165,6 +171,6 @@ app.get('/analyze', async (req, res) => {
     }
 });
 
-app.listen(8888, () => {
-    console.log('Server running on http://127.0.0.1:8888');
+app.listen(PORT, () => {
+    console.log(`Server running on http://127.0.0.1:${PORT}`);
 });

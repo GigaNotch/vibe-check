@@ -8,9 +8,10 @@ btn.addEventListener('click', () => {
     window.location.href = `${BACKEND_URL}/login`;
 });
 
-// Check for access token in URL
+// Check for access token in URL (query or hash fragment)
 const params = new URLSearchParams(window.location.search);
-const token = params.get('access_token');
+const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+const token = params.get('access_token') || hashParams.get('access_token');
 
 if (token) {
     window.history.replaceState({}, document.title, window.location.pathname);
