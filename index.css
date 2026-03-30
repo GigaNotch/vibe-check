@@ -38,3 +38,14 @@ h1{
     background-color: #1ed760;
 
 }
+
+@media screen {
+      .navbar ul {
+    flex-direction: column; /* Stack menu items vertically on mobile */
+  }
+  .navbar li a {
+    text-align: center;
+    padding: 14px;
+    width: 100%;
+  }
+}
